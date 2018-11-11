@@ -1,0 +1,61 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage{algpseudocode, algorithm}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{tabu}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\newenvironment{solution}{\begin{proof}[\textnormal{\textbf{Solution}}]}{\end{proof}}
+\newenvironment{exercise}[1]{\begin{proof}[\textnormal{\textbf{Exercise #1:}}]\phantom{\qedhere}}{\end{proof}}
+\newenvironment{lemma}{\begin{proof}[\textnormal{\textbf{Lemma}}]\phantom{\qedhere}}{\end{proof}}
+\newenvironment{definition}[1]{\begin{proof}[\textnormal{\textbf{Definition: #1}}]\mbox{}\\\phantom{\qedhere}}{\end{proof}}
+
+\theoremstyle{definition}
+\newtheorem*{thm}{Theorem}
+
+\begin{document}
+\begin{titlepage}\pagenumbering{gobble}
+	\centering
+	{\scshape\LARGE University of Houston\par}
+	\vspace{1cm}
+	{\scshape\Large Final-Exam Review \par}
+	\vspace{1.5cm}
+	{\huge\bfseries COSC 3320 \par}
+	{\huge\bfseries Algorithms and Data Structures\par}
+	\vspace{0.5cm}
+	{\large\bfseries Gopal Pandurangan\par}
+	\vspace{2cm}
+	\vfill
+
+% Bottom of the page
+\end{titlepage}
+\vspace*{\fill}\begin{center}{\Huge This page intentionally left blank.}\end{center}\vspace*{\fill}\thispagestyle{empty}\clearpage
+\pagenumbering{arabic}
+\section{Greedy Algorithms}
+
+\section{Heaps}
+
+\section{Graphs}
+\subsection{Representing a Graph}
+\subsection{Depth-First Search}
+\subsection{Breadth-First Search}
+
+\section{Graph Algorithms}
+\subsection{Minimum Spanning Tree}
+\subsection{Shortest Paths}
+\end{document}
