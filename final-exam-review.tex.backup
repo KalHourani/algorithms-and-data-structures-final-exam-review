@@ -10,7 +10,6 @@
 \usepackage{mathtools}
 \usepackage{enumerate}
 \usepackage{tabu}
-\usepackage{graphviz}
 
 %% Sets page size and margins
 \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
@@ -55,12 +54,10 @@
 Concepts seen previously can be found in the mid-term review, located \href{https://github.com/KalHourani/algorithms-and-data-structures-mid-term-review/raw/master/mid-term-review.pdf}{here}.
 \setcounter{section}{0}
 \section{Greedy Algorithms}
-A \textbf{Greedy Algorithm} will make the \textit{locally optimal} choice at each step. A greedy algorithm is not always optimal, but in many cases is optimal or sufficiently close to the optimal solution to justify its use. 
 
 \section{Heaps}
 
 \section{Graphs}
-\digraph[scale=0.5]{abc}{rankdir=LR; a->b->c;}
 \subsection{Representing a Graph}
 \subsection{Depth-First Search}
 \subsection{Breadth-First Search}
