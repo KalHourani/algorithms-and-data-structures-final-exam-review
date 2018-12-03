@@ -1,0 +1,23 @@
+graph G {rankdir=LR;
+  a [shape="circle", label="a", pos="-1,0!", color=red, style=bold] ;
+  b [shape="circle", label="b", pos="0,0!"] ;
+  c [shape="circle", label="c", pos="1,0!"] ;
+  d [shape="circle", label="d", pos="0,1!", color=red, style=bold] ;
+  e [shape="circle", label="e", pos="0,-1!", color=red, style=bold] ;
+  f [shape="circle", label="f", pos="-1,-1.5!"] ;
+  g [shape="circle", label="g", pos="1,-1.5!", color=red, style=bold] ;
+
+a -- b [label="4"];
+a -- d [label="1", color=red, style=bold];
+a -- e [label="8"];
+a -- f [label="7"];
+b -- d [label="3"];
+b -- c [label="5"];
+b -- e [label="6"];
+c -- d [label="2"];
+c -- e [label="3"];
+c -- g [label="9"];
+e -- f [label="2"];
+e -- g [label="1", color=red, style=bold];
+f -- g [label="5"];
+}

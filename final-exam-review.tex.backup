@@ -54,14 +54,76 @@
 Concepts seen previously can be found in the mid-term review, located \href{https://github.com/KalHourani/algorithms-and-data-structures-mid-term-review/raw/master/mid-term-review.pdf}{here}.
 \setcounter{section}{0}
 \section{Greedy Algorithms}
+A \textbf{Greedy Algorithm} will make the \textit{locally optimal} choice at each step. A greedy algorithm is not always optimal, but in many cases is optimal or sufficiently close to the optimal solution to justify its use. Consider the \textbf{Unbounded Knapsack Problem}: given $n$ items with weights $w_1,w_2,\hdots, w_n$ and values $v_1,v_2,\hdots, v_n$, and a weight-limit $W$, determine the non-negative integers for each item, $c_i$, such that \begin{align*}\sum_{i=1}^nc_iv_i&\text{ is maximal}\\\sum_{i=1}^nc_iw_i&\leq W\end{align*}
 
-\section{Heaps}
+A greedy solution is to choose the ``best'' item at each step. Sort the items by their ratios of value to weight, $\frac{v_i}{w_i}$, and insert the maximum possible number of copies of the first item, then the second, and so on. This algorithm is not optimal: suppose our items, $\{n_1,n_2,n_3\}$ have weights $\{2,3,4\}$ and values $\{4,6,9\}$, with a maximum weight of 5. The algorithm will output $\{n_3\}$, which has a value of 9, when $\{n_2,n_1\}$ has a value of 10.
 
 \section{Graphs}
-\subsection{Representing a Graph}
-\subsection{Depth-First Search}
-\subsection{Breadth-First Search}
+A graph is a collection of vertices (also called nodes) and edges between them. There are two types of graphs: directed and undirected. In a directed graph, an edge has a direction or orientation. In an undirected graph, edges have no direction. 
 
+A cycle is a collection of vertices in a graph such that a vertex can be reached from itself. In an undirected graph with no cycle, there are at most $n \choose 2=\frac{(n)(n-1)}{2}$. In a directed graph, this is doubled, and is simply $(n)(n-1)$. 
+\subsection{Representing a Graph}
+A graph can be represented in three ways:
+\begin{enumerate}
+ \item An \textbf{adjacency list}, in which each vertex stores a list of adjacent vertices.
+ \item An \textbf{adjacency matrix}, a matrix $A$ where $A_{i,j}=1$ if and only if there is an edge between the $i^{\text{th}}$ and $j^{\text{th}}$ vertices.
+\end{enumerate}
+
+Let $n$ denote the number of vertices and $m$ the number of edges. The space and time complexity of the above representations are given in the following table:
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+ & Adjacency List & Adjacency Matrix\\\hline
+ Space Complexity & $O(n+m)$ & $O(n^2)$\\\hline
+ Add vertex & $O(1)$ & $O(n^2)$\\\hline
+ Add edge & $O(1)$ & $O(1)$\\\hline
+ Remove vertex & $O(m)$ & $O(n^2)$\\\hline
+ Remove edge & $O(n)$ & $O(1)$\\\hline
+ Check vertices are adjacent & $O(n)$ & $O(1)$\\\hline
+\end{tabular}
+\end{center}
+\subsection{Depth-First Search}
+A \textbf{Depth-First Search} (DFS) is a recursive algorithm for searching every vertex of a graph. Begin with some vertex, $v$, and perform the DFS on its unvisited neighbors. This has the following pseudocode:
+
+\begin{algorithm}[H]
+\renewcommand{\thealgorithm}{}
+\caption{DFS(G, v): depth-first search of $G$ starting at node $v$}\label{iter-dfs}
+\begin{algorithmic}[1]
+\Procedure{DFS}{G, v}
+\State \textbf{mark} $v$ as visited
+\For{all neighbors $u$ of $v$}
+  \If{$u$ is not visited}
+    \State call \Call{DFS}{$G,u$}
+  \EndIf
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+This algorithm runs in linear, $O(n+m)$ time, where $n$ is the number of vertices and $m$ is the number of edges. It uses $O(n)$ memory to store the stack of vertices in the worst case. 
+\subsection{Breadth-First Search}
+A \textbf{Breadth-First Search} (BFS) is an iterative algorithm for searching every vertex of a graph. Begin with some vertex, $v$, and visit each of its unvisited neighbors. Repeat on the neighbors of the newly visited vertices, and repeat. This is typically done with a queue. 
+
+\begin{algorithm}[H]
+\renewcommand{\thealgorithm}{}
+\caption{BFS(G, v): breadth-first search of $G$ starting at node $v$}\label{iter-dfs}
+\begin{algorithmic}[1]
+\Procedure{BFS}{G, v}
+\State $Q$ = queue()\Comment{$Q$ is a queue of which vertices to explore.}
+\State \textbf{enqueue} $v$ to $Q$
+\While{$Q$ is not empty}
+  \State $a=\textbf{dequeue}(Q)$\Comment{Dequeue the queue and visit.}
+  \For{neighbors $u$ of $a$}
+    \If{$u$ is unvisited}
+      \State \textbf{enqueue} $u$ to $Q$
+      \State \textbf{mark} $u$ as visited
+    \EndIf
+  \EndFor
+\EndWhile
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+This algorithm runs in linear, $O(n+m)$ time, where $n$ is the number of vertices and $m$ is the number of edges. It uses $O(n)$ memory to store the stack of vertices in the worst case. 
 \section{Graph Algorithms}
 \subsection{Minimum Spanning Tree}
 \subsubsection{Kruskal's Algorithm}
