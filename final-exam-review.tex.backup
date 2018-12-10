@@ -10,6 +10,7 @@
 \usepackage{mathtools}
 \usepackage{enumerate}
 \usepackage{tabu}
+\usepackage{subfig}
 
 %% Sets page size and margins
 \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
@@ -30,6 +31,8 @@
 
 \theoremstyle{definition}
 \newtheorem*{thm}{Theorem}
+
+\renewcommand\thesubfigure{\arabic{subfigure}}
 
 \begin{document}
 \begin{titlepage}\pagenumbering{gobble}
@@ -126,12 +129,102 @@ A \textbf{Breadth-First Search} (BFS) is an iterative algorithm for searching ev
 This algorithm runs in linear, $O(n+m)$ time, where $n$ is the number of vertices and $m$ is the number of edges. It uses $O(n)$ memory to store the stack of vertices in the worst case. 
 \section{Graph Algorithms}
 \subsection{Minimum Spanning Tree}
+A \textbf{Minimum Spanning Tree} (MST) is a subset of the edges of a connected, edge-weighted undirected graph that connects all vertices and minimizes the total weight. In a case where the edge-weights are unique, the MST will be unique as well. A simple induction proof shows that the MST on a connected graph with $n$ vertices will have $n-1$ edges. 
+
+We present three algorithms to determine the MST and perform each on the following graph:
+
+\begin{center}\includegraphics[scale=0.5]{graphs/minimum-spanning-trees/e_1.png}\end{center}
+
 \subsubsection{Kruskal's Algorithm}
+Begin with an empty tree. Sort the edges by weight and add the smallest remaining edge to tree \textit{if it does not create a cycle}. Repeat until you have $n-1$ edges in your tree. 
+\setcounter{subfigure}{0}
+
+\begin{figure}[H]\centering
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_k_1.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_k_2.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_k_3.png}}
+
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_k_4.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_k_5.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_k_6.png}}
+ \end{figure}
+ \begin{figure}[H]\centering
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_k_7.png}}
+\end{figure}
 \subsubsection{Prim's Algorithm}
+Begin with an empty tree. Start at any vertex of the graph. At each step, append the smallest edge that connects the vertices in the MST to the vertices not yet in the MST. Repeat until all vertices are in the tree.
+\setcounter{subfigure}{0}
+
+\begin{figure}[H]\centering
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_p_1.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_p_2.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_p_3.png}}
+
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_p_4.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_p_5.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_p_6.png}}
+ \end{figure}
+\begin{figure}[H]\centering
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_p_7.png}}
+\end{figure}
+
 \subsubsection{Boruvka’s algorithm}
+Begin with an empty tree and with all vertices of the graph as separate components. At each step, add the smallest edge connected to each component to the tree (these edges will not necessarily be unique). Repeat until all vertices are in the tree. 
+\setcounter{subfigure}{0}
+
+\begin{figure}[H]\centering
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_b_1.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_b_2.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/minimum-spanning-trees/e_1_b_3.png}}
+\end{figure}
 \subsection{Shortest Paths}
 \subsubsection{Dijkstra's Algorithm}
+\textbf{Djikstra's Algorithm} is a single-source shortest path (ssps) algorithm. 
+\begin{enumerate}
+ \item Mark all nodes as unvisited. 
+ \item For every node, set distance to infinity. Set distance to initial node to 0.
+ \item For every neighbor of the current node, calculate the distance through the current node, and set the distance to the minimum of the current distance and the newly calculated distance.
+ \item Mark current node as visited. 
+ \item Set the node with the smallest distance as the current node and return to step 3.
+ 
+ For example, for the following graph
+ 
+ \begin{center}\includegraphics[width=0.5\textwidth]{graphs/shortest-path-trees/spt_1_0.png}\end{center}
+ 
+ Dijkstra's algorithm appears as follows:
+
+  \begin{center}\end{center}
+     \setcounter{subfigure}{0}
+   \begin{figure}[H]\centering
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_0.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_1.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_2.png}}
+
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_3.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_4.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_5.png}}
+ 
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_6.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_7.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_8.png}}
+ \end{figure}
+   \begin{figure}[H]\centering
+ 
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_9.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_10.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_11.png}}
+ 
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_12.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_13.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_14.png}}
+ 
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_14.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_final.png}}
+\end{figure}
+
+\end{enumerate}
 \subsubsection{A* Search}
+The \textbf{A* Search} is essentially Dijkstra's Algorithm with the nodes in a priority queue according to a heuristic. Instead of checking all neighbors for the shortest path, we check each neighbor 
 \subsubsection{Bellman-Ford Algorithm}
 \subsubsection{Floyd–Warshall Algorithm}
 \end{document}

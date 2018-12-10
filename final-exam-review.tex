@@ -179,7 +179,52 @@ Begin with an empty tree and with all vertices of the graph as separate componen
 \end{figure}
 \subsection{Shortest Paths}
 \subsubsection{Dijkstra's Algorithm}
+\textbf{Djikstra's Algorithm} is a single-source shortest path (ssps) algorithm. 
+\begin{enumerate}
+ \item Mark all nodes as unvisited. 
+ \item For every node, set distance to infinity. Set distance to initial node to 0.
+ \item For every neighbor of the current node, calculate the distance through the current node, and set the distance to the minimum of the current distance and the newly calculated distance.
+ \item Mark current node as visited. 
+ \item Set the node with the smallest distance as the current node and return to step 3.
+ 
+ For example, for the following graph
+ 
+ \begin{center}\includegraphics[width=0.5\textwidth]{graphs/shortest-path-trees/spt_1_0.png}\end{center}
+ 
+ Dijkstra's algorithm appears as follows:
+
+  \begin{center}\end{center}
+     \setcounter{subfigure}{0}
+   \begin{figure}[H]\centering
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_0.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_1.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_2.png}}
+
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_3.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_4.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_5.png}}
+ 
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_6.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_7.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_8.png}}
+ \end{figure}
+   \begin{figure}[H]\centering
+ 
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_9.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_10.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_11.png}}
+ 
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_12.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_13.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_14.png}}
+ 
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_14.png}}~
+ \subfloat[]{\includegraphics[width=0.33\textwidth]{graphs/shortest-path-trees/spt_1_final.png}}
+\end{figure}
+
+\end{enumerate}
 \subsubsection{A* Search}
+The \textbf{A* Search} is essentially Dijkstra's Algorithm with the nodes in a priority queue according to a heuristic. Instead of checking all neighbors for the shortest path, we check each the heuristic at each neighbor and determine the next node.
 \subsubsection{Bellman-Ford Algorithm}
 \subsubsection{Floyd–Warshall Algorithm}
 \end{document}

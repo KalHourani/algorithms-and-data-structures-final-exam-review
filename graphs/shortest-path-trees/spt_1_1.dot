@@ -1,0 +1,30 @@
+graph G {scale=3; rankdir=LR;  node [shape=plaintext]
+  subgraph cluster_01 { 
+    color = "white"
+    key [label=<<table border="1" color="white">
+      <tr><td align="center" port="tree" color="black">node</td><td align="center" port="tree" color="black">shortest path</td></tr>
+      <tr><td align="center" port="tree" color="black">a</td><td align="center" port="tree" color="black">0</td></tr>
+      <tr><td align="center" port="tree" color="blue"><font color="blue">b</font></td><td align="center" port="tree" color="blue"><font color="blue">1</font></td></tr>
+      <tr><td align="center" port="tree" color="black">c</td><td align="center" port="tree" color="black">&infin;</td></tr>
+      <tr><td align="center" port="tree" color="black">d</td><td align="center" port="tree" color="black">&infin;</td></tr>
+      <tr><td align="center" port="tree" color="black">e</td><td align="center" port="tree" color="black">&infin;</td></tr>
+      </table>>]
+    key:tree:e key:tree:w [shape = "none" color="red"]
+    key:back:e key:back:w [shape = "none" color="blue"]}
+  a [shape="circle", label="a", color=blue, style=bold];
+  b [shape="circle", label="b", color=blue, style=bold];
+  c [shape="circle", label="c"];
+  d [shape="circle", label="d"];
+  e [shape="circle", label="e"];
+
+a -- b [label="1", color=blue, style=bold, fontcolor=blue]; 
+a -- c [label="2"];
+a -- d [label="3"];
+a -- e [label="4"];
+b -- c [label="5"];
+b -- d [label="6"];
+b -- e [label="7"];
+c -- d [label="8"];
+c -- e [label="9"];
+d -- e [label="10"];
+}
