@@ -182,7 +182,7 @@ Begin with an empty tree and with all vertices of the graph as separate componen
 \textbf{Djikstra's Algorithm} is a single-source shortest path (ssps) algorithm. 
 \begin{enumerate}
  \item Mark all nodes as unvisited. 
- \item For every node, set distance to infinity. Set distance to initial node to 0.
+ \item For every node, set distance to $\infty$. Set distance to initial node to 0.
  \item For every neighbor of the current node, calculate the distance through the current node, and set the distance to the minimum of the current distance and the newly calculated distance.
  \item Mark current node as visited. 
  \item Set the node with the smallest distance as the current node and return to step 3.
@@ -224,7 +224,17 @@ Begin with an empty tree and with all vertices of the graph as separate componen
 
 \end{enumerate}
 \subsubsection{A* Search}
-The \textbf{A* Search} is essentially Dijkstra's Algorithm with the nodes in a priority queue according to a heuristic. Instead of checking all neighbors for the shortest path, we check each the heuristic at each neighbor and determine the next node.
+The \textbf{A* Search} is essentially Dijkstra's Algorithm with the nodes in a priority queue according to a heuristic. Instead of checking all neighbors for the shortest path, we check each the heuristic at the head of the queue, update the values of the neighbors, and continue.
 \subsubsection{Bellman-Ford Algorithm}
+Initialize the distance to all nodes to $\infty$ and to the starting node to 0. Perform the following $|V|-1$ times: for every edge $(u, v)$ with weight $w$, if $\text{distance}[u]+w<\text{distance}[v]$, set $\text{distance}[v]=\text{distance}[u]+w$. Repeat one more time; if any of the edges are updated, then there is a negative cycle. 
 \subsubsection{Floyd–Warshall Algorithm}
+Begin with a $|V|\times|V|$ array of distances initialized to $\infty$, with diagonal values initialized to 0, where the $i,j^{\text{th}}$ entry of the matrix represents the shortest distance from vertex $i$ to vertex $j$, i.e., let \[\text{distance}=\begin{bmatrix}
+0&\infty&\infty&\hdots&\infty&\infty\\
+\infty&0&\infty&\hdots&\infty&\infty\\
+\vdots&\vdots&\vdots&\vdots&\vdots\\
+\infty&\infty&\infty&\hdots&0&\infty\\
+\infty&\infty&\infty&\hdots&\infty&0
+\end{bmatrix}\]
+
+For $k=1$ to $|V|$, for $i=1$ to $|V|$, for $j=1$ to $|V|$, if $\text{distance}[i][j]>\text{distance}[i][k]+\text{distance}[k][j]$, set $\text{distance}[i][j]=\text{distance}[i][k]+\text{distance}[k][j]$. To check for a negative cycle, if any number on the diagonal of the above matrix is negative, there is a negative cycle. 
 \end{document}
